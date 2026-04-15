@@ -464,6 +464,7 @@ a { text-decoration: none; color: inherit; }
 }
 @media (max-width: 768px) {
   .nav-wrapper { width: calc(100% - 32px); top: 12px; }
+  .nav-cta-ghost { display: none; }
 }
 
 /* ═══════════════════════════════════════════════
