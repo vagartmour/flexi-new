@@ -289,7 +289,7 @@ a { text-decoration: none; color: inherit; }
   flex-shrink: 0;
 }
 
-/* CTA */
+/* CTA — filled (Get a Demo) */
 .nav-cta {
   display: inline-flex;
   align-items: center;
@@ -312,6 +312,31 @@ a { text-decoration: none; color: inherit; }
   background: var(--accent);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+/* CTA — ghost/outline (Chat on Telegram) */
+.nav-cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  height: 36px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.nav-cta-ghost:hover {
+  border-color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
 }
 
 /* Hamburger */
