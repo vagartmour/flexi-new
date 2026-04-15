@@ -970,6 +970,328 @@
 })();
 </script>
 
+<!-- ═══════════════════════════════════════════════
+     WHAT WE BUILD FOR YOU — HTML
+═══════════════════════════════════════════════ -->
+<section class="sol-section" id="solutions" aria-labelledby="sol-heading">
+<style>
+/* ── Solutions Section ─────────────────────────── */
+.sol-section {
+  background: linear-gradient(180deg, #2E3B47 0%, #6B7D8C 100%);
+  padding: 100px 0 72px;
+  position: relative;
+}
+.sol-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.sol-header {
+  margin-bottom: 48px;
+}
+.sol-heading {
+  font-family: var(--font-head);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.sol-heading .hl { color: var(--accent); }
+.sol-subhead {
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--text-sec);
+  max-width: 520px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Tabs ─────────────────────────── */
+.sol-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.sol-tabs::-webkit-scrollbar { display: none; }
+.sol-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.sol-tab:hover {
+  color: rgba(255,255,255,0.95);
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.08);
+}
+.sol-tab.active {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Panels ─────────────────────────── */
+.sol-panels { position: relative; }
+@keyframes solFadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sol-panel {
+  display: none;
+}
+.sol-panel.active {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 56px;
+  align-items: stretch;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 48px;
+  min-height: 420px;
+  animation: solFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.sol-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sol-content {}
+.sol-content-title {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 28px;
+}
+.sol-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sol-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.5;
+}
+.sol-bullets li::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  border: 1.5px solid var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2304B3E1' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  background-size: 11px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 2px;
+}
+
+/* ── Visual placeholder ─────────────────────────── */
+.sol-visual {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+.sol-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 320px;
+  color: rgba(255,255,255,0.2);
+  border: 2px dashed rgba(255,255,255,0.12);
+  border-radius: 8px;
+  margin: 12px;
+}
+.sol-placeholder svg {
+  opacity: 0.3;
+}
+.sol-placeholder span {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 900px) {
+  .sol-panel.active {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 36px 28px;
+  }
+  .sol-placeholder { min-height: 200px; }
+}
+@media (max-width: 640px) {
+  .sol-section { padding: 72px 0 0; }
+  .sol-inner { padding: 0 20px; }
+  .sol-panel.active { padding: 28px 20px; }
+  .v-game-grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+
+  <div class="sol-inner">
+
+    <!-- Header -->
+    <div class="sol-header">
+      <span class="section-tag">What We Build For You</span>
+      <h2 class="sol-heading" id="sol-heading">Built For Your <span class="hl">Business.</span></h2>
+      <p class="sol-subhead">Every solution you need to launch, operate, and scale — engineered in-house.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="sol-tabs" role="tablist" aria-label="Solutions">
+      <button class="sol-tab active" role="tab" aria-selected="true"  data-sol="0">Turnkey Solutions</button>
+      <button class="sol-tab"        role="tab" aria-selected="false" data-sol="1">White Label</button>
+      <button class="sol-tab"        role="tab" aria-selected="false" data-sol="2">Casino Aggregator</button>
+      <button class="sol-tab"        role="tab" aria-selected="false" data-sol="3">Sportsbook API</button>
+    </div>
+
+    <!-- Panels -->
+    <div class="sol-panels">
+
+      <!-- Panel 0: Turnkey Solutions -->
+      <div class="sol-panel active" role="tabpanel" data-sol="0">
+        <div class="sol-content">
+          <h3 class="sol-content-title">Turnkey Solutions.</h3>
+          <ul class="sol-bullets">
+            <li>Casino, Sportsbook, Payments &amp; CRM</li>
+            <li>Fully branded from day one</li>
+            <li>Launch fast — we handle the stack</li>
+            <li>Got a specific provider, tool, or system in mind? We'll build the connection — fast</li>
+          </ul>
+        </div>
+        <div class="sol-visual">
+          <div class="sol-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Image Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 1: White Label -->
+      <div class="sol-panel" role="tabpanel" data-sol="1">
+        <div class="sol-content">
+          <h3 class="sol-content-title">White Label.</h3>
+          <ul class="sol-bullets">
+            <li>We handle the licensing</li>
+            <li>Ready-to-launch</li>
+            <li>Activate only what you need</li>
+            <li>Full PAM access</li>
+          </ul>
+        </div>
+        <div class="sol-visual">
+          <div class="sol-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Image Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Casino Aggregator -->
+      <div class="sol-panel" role="tabpanel" data-sol="2">
+        <div class="sol-content">
+          <h3 class="sol-content-title">Casino Aggregator.</h3>
+          <ul class="sol-bullets">
+            <li>5,500+ games from top providers</li>
+            <li>Single API integration</li>
+            <li>Real-time reporting</li>
+            <li>Native bonus engine</li>
+          </ul>
+        </div>
+        <div class="sol-visual">
+          <div class="sol-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Image Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 3: Sportsbook API -->
+      <div class="sol-panel" role="tabpanel" data-sol="3">
+        <div class="sol-content">
+          <h3 class="sol-content-title">Sportsbook API.</h3>
+          <ul class="sol-bullets">
+            <li>100+ sports &amp; virtuals</li>
+            <li>50K+ events monthly</li>
+            <li>Live &amp; prematch</li>
+            <li>Plug-and-play</li>
+          </ul>
+        </div>
+        <div class="sol-visual">
+          <div class="sol-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Image Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sol-panels -->
+
+  </div><!-- /sol-inner -->
+
+</section>
+<script>
+(function() {
+  const tabs   = document.querySelectorAll('.sol-tab');
+  const panels = document.querySelectorAll('.sol-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = +tab.dataset.sol;
+      tabs.forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+        t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
+      panels.forEach((p, i) => {
+        p.classList.toggle('active', i === idx);
+      });
+    });
+  });
+})();
+</script>
+
 <script>
 // ── Numbers count-up ───────────────────────────
 (function () {
