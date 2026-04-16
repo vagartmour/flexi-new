@@ -2547,8 +2547,11 @@
   margin-bottom: 14px;
   width: fit-content;
 }
-.blog-category--industry { color: #60C8FF; background: rgba(96,200,255,0.1); border-color: rgba(96,200,255,0.2); }
-.blog-category--linkedin  { color: #A78BFA; background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.2); }
+.blog-category--industry   { color: #60C8FF; background: rgba(96,200,255,0.1);  border-color: rgba(96,200,255,0.2);  }
+.blog-category--linkedin   { color: #A78BFA; background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.2); }
+.blog-category--providers  { color: #FFAB40; background: rgba(255,171,64,0.1);  border-color: rgba(255,171,64,0.2);  }
+.blog-category--events     { color: #4ADE80; background: rgba(74,222,128,0.1);  border-color: rgba(74,222,128,0.2);  }
+.blog-category--regulation { color: #60A5FA; background: rgba(96,165,250,0.1);  border-color: rgba(96,165,250,0.2);  }
 
 .blog-card-title {
   font-family: var(--font-head);
@@ -2566,10 +2569,8 @@
   line-height: 1.65;
   flex: 1;
   margin-bottom: 20px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
   overflow: hidden;
+  max-height: 70px; /* ~3 lines, no ellipsis */
 }
 
 /* Meta row */
