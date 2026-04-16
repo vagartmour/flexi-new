@@ -787,6 +787,10 @@
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 36px 28px;
+    min-height: 0;
+  }
+  .sol-visual {
+    aspect-ratio: 4 / 3;
   }
   .sol-placeholder { min-height: 160px; }
 }
@@ -794,6 +798,11 @@
   .sol-section { padding: 72px 0 56px; }
   .sol-inner { padding: 0 24px; }
   .sol-panel.active { padding: 28px 20px; }
+  .sol-content-title {
+    font-size: clamp(20px, 5.5vw, 26px);
+    margin-bottom: 16px;
+  }
+  .sol-bullets { margin-bottom: 20px; }
   .v-game-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
