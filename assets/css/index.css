@@ -34,6 +34,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 60% center;
   z-index: 0;
   pointer-events: none;
 }
@@ -153,15 +154,16 @@
   line-height: 1.3;
 }
 @media (max-width: 768px) {
-  .hero-inner { padding: 120px 24px 32px; }
-  .hero-numbers-inner { padding: 14px 20px 18px; }
-  .hero-numbers-header { margin-bottom: 12px; }
+  .hero-inner { padding: 72px 24px 20px; }
+  .hero-video { object-position: 70% center; }
+  .hero-numbers-inner { padding: 10px 20px 14px; }
+  .hero-numbers-header { margin-bottom: 8px; }
   .hero-numbers-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0;
   }
   .hero-numbers-item {
-    padding: 12px 0 12px 0;
+    padding: 8px 0 8px 0;
     margin-right: 0;
     border-right: none;
     border-bottom: none;
@@ -177,7 +179,7 @@
   .hero-numbers-item:nth-child(2) {
     border-bottom: 1px solid rgba(255,255,255,0.12);
   }
-  .hero-numbers-num { font-size: 36px; }
+  .hero-numbers-num { font-size: 32px; }
 }
 
 /* Badge */
@@ -302,6 +304,8 @@
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .hero { min-height: 100svh; }
+  .hero-bottom { margin-top: 20px; }
+  .hero-headline { font-size: clamp(40px, 10vw, 72px); }
 }
 
 /* Compact viewport height (laptop screens) */
