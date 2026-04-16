@@ -10,11 +10,32 @@
    ================================================================= */
 .hero {
   position: relative;
-  background: linear-gradient(180deg, #2E3B47 0%, #6B7D8C 100%);
+  background: #0c161b;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
+}
+
+/* Dark overlay on top of video so text stays readable */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 18, 24, 0.58);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Background video */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Canvas network background */
@@ -24,7 +45,8 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 0.35;
+  z-index: 2;
 }
 
 /* Glow orbs */
@@ -35,6 +57,7 @@
   background: radial-gradient(ellipse, var(--accent-dim) 0%, transparent 65%);
   top: -150px; left: -250px;
   pointer-events: none;
+  z-index: 2;
 }
 .hero-glow-2 {
   position: absolute;
@@ -43,6 +66,7 @@
   background: radial-gradient(ellipse, var(--accent-dim) 0%, transparent 65%);
   bottom: -100px; right: -100px;
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-inner {
@@ -55,12 +79,13 @@
   flex-direction: column;
   justify-content: center;
   padding: 140px 48px 40px;
+  z-index: 3;
 }
 
 /* Numbers bar — bottom of hero */
 .hero-numbers-bar {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   border-top: 1px solid rgba(255,255,255,0.12);
   background: rgba(0,0,0,0.28);
   backdrop-filter: blur(16px);

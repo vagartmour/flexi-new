@@ -95,6 +95,9 @@
      HERO — "The Statement"
 ═══════════════════════════════════════════════ -->
 <section class="hero" id="home">
+  <video class="hero-video" autoplay muted playsinline aria-hidden="true">
+    <source src="assets/videos/hero-video.mp4" type="video/mp4">
+  </video>
   <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-glow-1" aria-hidden="true"></div>
   <div class="hero-glow-2" aria-hidden="true"></div>
@@ -809,6 +812,41 @@
       el.classList.remove('fade-out');
     }, 400);
   }, 3000);
+})();
+</script>
+
+<script>
+/* Hero video — ping-pong loop (forward → backward → forward …)
+   Uses the 'seeked' event to chain seeks one-at-a-time so the
+   browser can render each frame before we request the next step. */
+(function initHeroVideoPingPong() {
+  var video = document.querySelector('.hero-video');
+  if (!video) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.loop = true;
+    return;
+  }
+
+  var STEP = 1 / 30; /* one frame at ~30 fps */
+  var reversing = false;
+
+  video.addEventListener('seeked', function () {
+    if (!reversing) return;
+    if (video.currentTime < 0.1) {
+      reversing = false;
+      video.play().catch(function () {});
+    } else {
+      video.currentTime = Math.max(0, video.currentTime - STEP);
+    }
+  });
+
+  video.addEventListener('ended', function () {
+    if (reversing) return;
+    reversing = true;
+    /* first step back — this triggers 'seeked' which chains the rest */
+    video.currentTime = Math.max(0, (video.duration || video.currentTime) - STEP);
+  });
 })();
 </script>
 
