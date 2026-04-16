@@ -213,7 +213,7 @@
         <div class="prov-track" id="provTrack">
 
           <div class="prov-page">
-            <!-- PAGE 1 — cards 1–6 -->
+            <!-- PAGE 1 — cards 1–12 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/pragmatic-play.svg" alt="Pragmatic Play"></div>
               <span class="prov-card-name">Pragmatic Play</span>
@@ -238,10 +238,6 @@
               <div class="prov-card-logo"><img src="assets/providers/playtech.svg" alt="Playtech"></div>
               <span class="prov-card-name">Playtech</span>
             </div>
-          </div><!-- /prov-page-1 -->
-
-          <div class="prov-page">
-            <!-- PAGE 2 — cards 7–12 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/redtiger.svg" alt="Red Tiger"></div>
               <span class="prov-card-name">Red Tiger</span>
@@ -266,10 +262,10 @@
               <div class="prov-card-logo"><img src="assets/providers/relax-gaming.svg" alt="Relax Gaming"></div>
               <span class="prov-card-name">Relax Gaming</span>
             </div>
-          </div><!-- /prov-page-2 -->
+          </div><!-- /prov-page-1 -->
 
           <div class="prov-page">
-            <!-- PAGE 3 — cards 13–18 -->
+            <!-- PAGE 2 — cards 13–24 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/quickspin.svg" alt="Quickspin"></div>
               <span class="prov-card-name">Quickspin</span>
@@ -294,10 +290,6 @@
               <div class="prov-card-logo"><img src="assets/providers/evoplay.svg" alt="Evoplay"></div>
               <span class="prov-card-name">Evoplay</span>
             </div>
-          </div><!-- /prov-page-3 -->
-
-          <div class="prov-page">
-            <!-- PAGE 4 — cards 19–24 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/betsoft.svg" alt="Betsoft"></div>
               <span class="prov-card-name">Betsoft</span>
@@ -322,10 +314,10 @@
               <div class="prov-card-logo"><img src="assets/providers/pgsoft.svg" alt="PGSoft"></div>
               <span class="prov-card-name">PGSoft</span>
             </div>
-          </div><!-- /prov-page-4 -->
+          </div><!-- /prov-page-2 -->
 
           <div class="prov-page">
-            <!-- PAGE 5 — cards 25–30 -->
+            <!-- PAGE 3 — cards 25–36 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/amatic.svg" alt="Amatic"></div>
               <span class="prov-card-name">Amatic</span>
@@ -350,10 +342,6 @@
               <div class="prov-card-logo"><img src="assets/providers/gamzix.svg" alt="Gamzix"></div>
               <span class="prov-card-name">Gamzix</span>
             </div>
-          </div><!-- /prov-page-5 -->
-
-          <div class="prov-page">
-            <!-- PAGE 6 — cards 31–36 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/kiron.svg" alt="Kiron"></div>
               <span class="prov-card-name">Kiron</span>
@@ -378,7 +366,7 @@
               <div class="prov-card-logo"><img src="assets/providers/tomhorn.svg" alt="Tom Horn"></div>
               <span class="prov-card-name">Tom Horn</span>
             </div>
-          </div><!-- /prov-page-6 -->
+          </div><!-- /prov-page-3 -->
 
         </div><!-- /prov-track -->
       </div><!-- /prov-viewport -->
@@ -388,9 +376,6 @@
         <button class="prov-dot active" data-page="0" aria-label="Page 1" aria-selected="true"></button>
         <button class="prov-dot" data-page="1" aria-label="Page 2" aria-selected="false"></button>
         <button class="prov-dot" data-page="2" aria-label="Page 3" aria-selected="false"></button>
-        <button class="prov-dot" data-page="3" aria-label="Page 4" aria-selected="false"></button>
-        <button class="prov-dot" data-page="4" aria-label="Page 5" aria-selected="false"></button>
-        <button class="prov-dot" data-page="5" aria-label="Page 6" aria-selected="false"></button>
       </div>
 
     </div><!-- /carousel wrap -->
@@ -414,8 +399,8 @@
   const dots       = document.querySelectorAll('.prov-dot');
   const label      = document.getElementById('provPageLabel');
   const cards      = document.querySelectorAll('.prov-card');
-  const perPage    = 6;
-  const totalPages = 6;
+  const perPage    = 12;
+  const totalPages = 3;
   let current = 0;
 
   const isMobile = () => window.innerWidth <= 768;
