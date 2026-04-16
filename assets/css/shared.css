@@ -438,7 +438,7 @@ a { text-decoration: none; color: inherit; }
   transition: color var(--transition);
 }
 .drawer-link:hover { color: var(--text); }
-.drawer-cta { display: flex; margin-top: 16px; }
+.drawer-cta { display: flex; gap: 8px; margin-top: 16px; }
 .drawer-cta a {
   flex: 1;
   display: flex;
@@ -454,6 +454,16 @@ a { text-decoration: none; color: inherit; }
   transition: var(--transition);
 }
 .drawer-cta a:hover { background: var(--accent); }
+.drawer-cta a.nav-cta-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.28);
+  font-weight: 600;
+}
+.drawer-cta a.nav-cta-ghost:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.55);
+}
 
 /* Responsive */
 @media (min-width: 768px) {
