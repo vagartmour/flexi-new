@@ -133,21 +133,30 @@
 }
 @media (max-width: 768px) {
   .hero-inner { padding: 120px 24px 32px; }
-  .hero-numbers-inner { padding: 24px 24px 32px; }
-  .hero-numbers-header { margin-bottom: 20px; }
+  .hero-numbers-inner { padding: 14px 20px 18px; }
+  .hero-numbers-header { margin-bottom: 12px; }
   .hero-numbers-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px 0;
+    gap: 0;
   }
   .hero-numbers-item {
-    padding-right: 16px;
-    margin-right: 16px;
+    padding: 12px 0 12px 0;
+    margin-right: 0;
     border-right: none;
+    border-bottom: none;
   }
   .hero-numbers-item:nth-child(odd) {
+    padding-right: 16px;
     border-right: 1px solid rgba(255,255,255,0.1);
   }
-  .hero-numbers-num { font-size: 44px; }
+  .hero-numbers-item:nth-child(even) {
+    padding-left: 16px;
+  }
+  .hero-numbers-item:nth-child(1),
+  .hero-numbers-item:nth-child(2) {
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-numbers-num { font-size: 36px; }
 }
 
 /* Badge */
@@ -272,7 +281,7 @@
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .hero { min-height: auto; }
+  .hero { min-height: 100svh; }
 }
 
 /* Compact viewport height (laptop screens) */
@@ -572,16 +581,16 @@
 
 .prov-track {
   display: flex;
-  width: 300%; /* 3 pages */
+  width: 600%; /* 6 pages */
   transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
   will-change: transform;
 }
 .prov-page {
-  width: 33.333%;
+  width: 16.667%;
   flex-shrink: 0;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   gap: 12px;
   background: transparent;
   border: none;
@@ -667,14 +676,29 @@
 }
 
 @media (max-width: 768px) {
-  .prov-page { grid-template-columns: repeat(3, 1fr); }
-  .prov-stats { grid-template-columns: repeat(3, 1fr); }
-  .prov-stat:not(:first-child) { padding-left: 20px; }
-}
-@media (max-width: 480px) {
-  .prov-page { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  /* Mobile: native scroll-snap, no JS arrows */
+  .prov-viewport {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .prov-viewport::-webkit-scrollbar { display: none; }
+  .prov-track {
+    width: auto !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .prov-page {
+    flex: 0 0 100%;
+    width: auto;
+    scroll-snap-align: start;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .prov-nav { display: none; }
+  .prov-dots { display: none; }
   .prov-card { padding: 20px 12px; }
-  .prov-card-logo { width: 100%; height: auto; }
   .prov-card-logo img { max-width: 140px; }
   .prov-stats { grid-template-columns: repeat(2, 1fr); gap: 0; }
   .prov-stat { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; }
@@ -722,7 +746,7 @@
         <div class="prov-track" id="provTrack">
 
           <div class="prov-page">
-            <!-- PAGE 1 — cards 1–12 -->
+            <!-- PAGE 1 — cards 1–6 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/pragmatic-play.svg" alt="Pragmatic Play"></div>
               <span class="prov-card-name">Pragmatic Play</span>
@@ -747,6 +771,10 @@
               <div class="prov-card-logo"><img src="assets/providers/playtech.svg" alt="Playtech"></div>
               <span class="prov-card-name">Playtech</span>
             </div>
+          </div><!-- /prov-page-1 -->
+
+          <div class="prov-page">
+            <!-- PAGE 2 — cards 7–12 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/redtiger.svg" alt="Red Tiger"></div>
               <span class="prov-card-name">Red Tiger</span>
@@ -771,10 +799,10 @@
               <div class="prov-card-logo"><img src="assets/providers/relax-gaming.svg" alt="Relax Gaming"></div>
               <span class="prov-card-name">Relax Gaming</span>
             </div>
-          </div><!-- /prov-page-1 -->
+          </div><!-- /prov-page-2 -->
 
           <div class="prov-page">
-            <!-- PAGE 2 — cards 13–24 -->
+            <!-- PAGE 3 — cards 13–18 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/quickspin.svg" alt="Quickspin"></div>
               <span class="prov-card-name">Quickspin</span>
@@ -799,6 +827,10 @@
               <div class="prov-card-logo"><img src="assets/providers/evoplay.svg" alt="Evoplay"></div>
               <span class="prov-card-name">Evoplay</span>
             </div>
+          </div><!-- /prov-page-3 -->
+
+          <div class="prov-page">
+            <!-- PAGE 4 — cards 19–24 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/betsoft.svg" alt="Betsoft"></div>
               <span class="prov-card-name">Betsoft</span>
@@ -823,10 +855,10 @@
               <div class="prov-card-logo"><img src="assets/providers/pgsoft.svg" alt="PGSoft"></div>
               <span class="prov-card-name">PGSoft</span>
             </div>
-          </div><!-- /prov-page-2 -->
+          </div><!-- /prov-page-4 -->
 
           <div class="prov-page">
-            <!-- PAGE 3 — cards 25–36 -->
+            <!-- PAGE 5 — cards 25–30 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/amatic.svg" alt="Amatic"></div>
               <span class="prov-card-name">Amatic</span>
@@ -851,6 +883,10 @@
               <div class="prov-card-logo"><img src="assets/providers/gamzix.svg" alt="Gamzix"></div>
               <span class="prov-card-name">Gamzix</span>
             </div>
+          </div><!-- /prov-page-5 -->
+
+          <div class="prov-page">
+            <!-- PAGE 6 — cards 31–36 -->
             <div class="prov-card">
               <div class="prov-card-logo"><img src="assets/providers/kiron.svg" alt="Kiron"></div>
               <span class="prov-card-name">Kiron</span>
@@ -875,7 +911,7 @@
               <div class="prov-card-logo"><img src="assets/providers/tomhorn.svg" alt="Tom Horn"></div>
               <span class="prov-card-name">Tom Horn</span>
             </div>
-          </div><!-- /prov-page-3 -->
+          </div><!-- /prov-page-6 -->
 
         </div><!-- /prov-track -->
       </div><!-- /prov-viewport -->
@@ -885,6 +921,9 @@
         <button class="prov-dot active" data-page="0" aria-label="Page 1" aria-selected="true"></button>
         <button class="prov-dot" data-page="1" aria-label="Page 2" aria-selected="false"></button>
         <button class="prov-dot" data-page="2" aria-label="Page 3" aria-selected="false"></button>
+        <button class="prov-dot" data-page="3" aria-label="Page 4" aria-selected="false"></button>
+        <button class="prov-dot" data-page="4" aria-label="Page 5" aria-selected="false"></button>
+        <button class="prov-dot" data-page="5" aria-label="Page 6" aria-selected="false"></button>
       </div>
 
     </div><!-- /carousel wrap -->
@@ -902,35 +941,40 @@
 
 <script>
 (function() {
-  const track     = document.getElementById('provTrack');
-  const prevBtn   = document.getElementById('provPrev');
-  const nextBtn   = document.getElementById('provNext');
-  const dots      = document.querySelectorAll('.prov-dot');
-  const label     = document.getElementById('provPageLabel');
-  const cards     = document.querySelectorAll('.prov-card');
-  const perPage   = 12;
-  const totalPages = 3;
+  const track      = document.getElementById('provTrack');
+  const prevBtn    = document.getElementById('provPrev');
+  const nextBtn    = document.getElementById('provNext');
+  const dots       = document.querySelectorAll('.prov-dot');
+  const label      = document.getElementById('provPageLabel');
+  const cards      = document.querySelectorAll('.prov-card');
+  const perPage    = 6;
+  const totalPages = 6;
   let current = 0;
+
+  const isMobile = () => window.innerWidth <= 768;
 
   function goTo(page) {
     current = page;
-    // Each page = 33.333% of track width = 100% of viewport
-    track.style.transform = `translateX(-${page * (100 / 3)}%)`;
 
-    // Update dots
-    dots.forEach((d, i) => {
-      d.classList.toggle('active', i === page);
-      d.setAttribute('aria-selected', i === page);
-    });
+    if (!isMobile()) {
+      // Each page = (100/totalPages)% of track width = 100% of viewport
+      track.style.transform = `translateX(-${page * (100 / totalPages)}%)`;
 
-    // Update label
-    const from = page * perPage + 1;
-    const to   = Math.min((page + 1) * perPage, totalPages * perPage);
-    label.textContent = `${from}–${to}`;
+      // Update dots
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === page);
+        d.setAttribute('aria-selected', i === page);
+      });
 
-    // Update buttons
-    prevBtn.disabled = page === 0;
-    nextBtn.disabled = page === totalPages - 1;
+      // Update label
+      const from = page * perPage + 1;
+      const to   = Math.min((page + 1) * perPage, totalPages * perPage);
+      label.textContent = `${from}–${to}`;
+
+      // Update buttons
+      prevBtn.disabled = page === 0;
+      nextBtn.disabled = page === totalPages - 1;
+    }
 
     // Reveal cards for this page
     const pageCards = Array.from(cards).slice(page * perPage, (page + 1) * perPage);
@@ -940,25 +984,46 @@
     });
   }
 
-  // Auto-advance every 5 seconds (loops back to page 0)
-  let autoTimer = setInterval(() => goTo((current + 1) % totalPages), 5000);
-
+  // Auto-advance every 5 seconds (desktop only)
+  let autoTimer = null;
+  function startTimer() {
+    if (!isMobile()) {
+      autoTimer = setInterval(() => goTo((current + 1) % totalPages), 5000);
+    }
+  }
   function resetTimer() {
     clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo((current + 1) % totalPages), 5000);
+    startTimer();
   }
 
-  prevBtn.addEventListener('click', () => { if (current > 0) { goTo(current - 1); resetTimer(); } });
-  nextBtn.addEventListener('click', () => { if (current < totalPages - 1) { goTo(current + 1); resetTimer(); } });
+  prevBtn.addEventListener('click', () => {
+    if (isMobile()) return;
+    if (current > 0) { goTo(current - 1); resetTimer(); }
+  });
+  nextBtn.addEventListener('click', () => {
+    if (isMobile()) return;
+    if (current < totalPages - 1) { goTo(current + 1); resetTimer(); }
+  });
   dots.forEach(dot => {
-    dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.page)); resetTimer(); });
+    dot.addEventListener('click', () => {
+      if (isMobile()) return;
+      goTo(parseInt(dot.dataset.page)); resetTimer();
+    });
   });
 
   // IntersectionObserver for initial reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        goTo(0);
+        if (isMobile()) {
+          // Reveal all cards progressively on mobile
+          Array.from(cards).forEach((card, i) => {
+            setTimeout(() => card.classList.add('revealed'), i * 20);
+          });
+        } else {
+          goTo(0);
+          startTimer();
+        }
         observer.unobserve(entry.target);
       }
     });
@@ -966,7 +1031,9 @@
 
   const section = document.getElementById('providers');
   observer.observe(section);
-  setTimeout(() => goTo(0), 1200);
+  setTimeout(() => {
+    if (!isMobile()) goTo(0);
+  }, 1200);
 })();
 </script>
 
@@ -1649,21 +1716,29 @@
 }
 
 @media (max-width: 600px) {
-  .feat-inner {
-    padding: 0 20px;
-  }
+  .feat-section { padding: 72px 0 60px; }
+  .feat-inner { padding: 0 0 0 20px; }
   .feat-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 12px;
+    padding-right: 8px;
   }
+  .feat-grid::-webkit-scrollbar { display: none; }
+  .feat-card,
   .feat-card--pam,
   .feat-card--bonus,
   .feat-card--wallet,
   .feat-card--retail,
   .feat-card--crypto {
-    grid-column: span 1;
-  }
-  .feat-section {
-    padding: 72px 0 60px;
+    flex: 0 0 78vw;
+    width: 78vw;
+    scroll-snap-align: start;
+    grid-column: unset !important;
   }
 }
 </style>
@@ -3313,7 +3388,29 @@
   gap: 24px;
 }
 @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px)  { .blog-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .blog-section { overflow: visible; }
+  .blog-inner { padding: 0 0 0 24px; }
+  .blog-header { padding-right: 24px; }
+  .blog-grid {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 16px;
+    padding-right: 8px;
+  }
+  .blog-grid::-webkit-scrollbar { display: none; }
+  .blog-col-right { display: contents; }
+  .blog-card--featured,
+  .blog-card--compact {
+    flex: 0 0 80vw;
+    scroll-snap-align: start;
+    grid-column: unset !important;
+    min-width: 0;
+  }
+}
 
 .blog-col-right {
   display: contents;
@@ -3876,7 +3973,6 @@
   font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s, transform 0.2s;
-  align-self: flex-start;
 }
 .contact-submit:hover {
   opacity: 0.88;
@@ -3906,7 +4002,7 @@
   transform: translateY(-1px);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .contact-actions { flex-direction: column; align-items: stretch; }
   .contact-submit, .contact-telegram-btn { justify-content: center; }
 }

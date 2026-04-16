@@ -490,6 +490,7 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 560px) {
   .footer-main { grid-template-columns: 1fr 1fr; padding: 48px 24px 32px; gap: 32px; }
   .footer-main > *:first-child { grid-column: 1 / -1; }
+  .footer-main > *:last-child  { grid-column: 1 / -1; }
 }
 
 /* ── Col headings ───────────────────────────── */
