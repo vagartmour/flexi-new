@@ -11,30 +11,7 @@ if (navPill) {
   }, { passive: true });
 }
 
-// ── 2. Scroll fade-in (IntersectionObserver) ──
-function initFadeObserver() {
-  const fadeEls = document.querySelectorAll('.fade-up');
-  const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        fadeObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
-  fadeEls.forEach(el => fadeObs.observe(el));
-  // Fallback: ensure all fade-up elements become visible after 2s
-  setTimeout(() => {
-    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
-  }, 2000);
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFadeObserver);
-} else {
-  initFadeObserver();
-}
-
-// ── 3. Hamburger / Drawer ─────────────────────
+// ── 2. Hamburger / Drawer ─────────────────────
 const hamburger = document.getElementById('hamburger');
 const drawer    = document.getElementById('drawer');
 
@@ -91,3 +68,62 @@ if (hamburger && drawer) {
     });
   });
 }
+
+// ── 3. Contact form submit ─────────────────────
+// Called via onsubmit="contactSubmit(event)" in contact partial
+function contactSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.contact-submit');
+  btn.textContent = 'Message Sent ✓';
+  btn.style.background = 'var(--surface2)';
+  btn.style.color = 'var(--accent)';
+  btn.disabled = true;
+}
+
+// ── 4. Load HTML partials ─────────────────────
+// Usage: <div data-include="contact"></div>
+// Loads from assets/partials/{name}.html and replaces the placeholder
+async function loadPartials() {
+  const elements = document.querySelectorAll('[data-include]');
+  if (!elements.length) return;
+  for (const el of Array.from(elements)) {
+    const name = el.dataset.include;
+    try {
+      const res = await fetch(`assets/partials/${name}.tpl`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const html = await res.text();
+      const tpl = document.createElement('template');
+      tpl.innerHTML = html;
+      el.replaceWith(tpl.content);
+    } catch (err) {
+      console.warn(`Partial "${name}" not loaded:`, err.message);
+    }
+  }
+}
+
+// ── 5. Scroll fade-in (IntersectionObserver) ──
+// Runs after partials so it catches any fade-up elements inside them
+function initFadeObserver() {
+  const fadeEls = document.querySelectorAll('.fade-up');
+  if (!fadeEls.length) return;
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        fadeObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+  fadeEls.forEach(el => fadeObs.observe(el));
+  // Fallback: ensure all fade-up elements become visible after 2s
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 2000);
+}
+
+// ── Init ───────────────────────────────────────
+// Load partials first, then init fade observer so it sees all elements
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadPartials();
+  initFadeObserver();
+});
